@@ -1,21 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { Button, ThemeProvider, GlobalStyle, Modal, TaskBar, List } from '@react95/core';
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import '@react95/icons/icons.css';
+import { backgroundColor } from '@xstyled/system';
+import { Icon } from '@react95/core'
 
+
+const StyledShorcut = styled.div`
+    margin-left: 20px;
+    margin-top: 20px;
+	align-items: center;
+`;
 
 const MyApp = () => {
+  const [isMounted, setMounted] = useState(false);
   const [first, toggleFirst] = useState(false);
   const [second, toggleSecond] = useState(false);
 
   const closeFirst = () => toggleFirst(false);
   const closeSecond = () => toggleSecond(false);
-  // useEffect(() => {
-  //   set
-  //   return () => {
-  //     cleanup
-  //   }
-  // }, [])
+
+  useEffect(() => {
+    setMounted(true);
+  }, [])
+
+  if (!isMounted) {
+    return null;
+  }
+
+
+
   return (
     <ThemeProvider>
       <GlobalStyle />
@@ -62,7 +76,17 @@ const MyApp = () => {
           }
         />
       </>
-    </ThemeProvider>
+      <h1
+        style={{
+          textAlign: 'center',
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          marginTop: '0px',
+        }}>
+        <a href="https://www.youtube.com/watch?v=_mUvG6x53VM">420</a>
+      </h1>
+    </ThemeProvider >
   );
 }
 
